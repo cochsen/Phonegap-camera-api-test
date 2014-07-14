@@ -92,13 +92,35 @@
       alert('Failed because: ' + message);
     }
 
+    $(document).ready(function() {
+      $('#capture-photo').click(function() {
+        capturePhoto();
+      });
+      $('#capture-photo-edit').click(function() {
+        capturePhotoEdit();
+      });
+      $('#get-photo-from-library').click(function() {
+        getPhoto(pictureSource.PHOTOLIBRARY);
+      });
+      $('#get-photo-from-gallery').click(function() {
+        getPhoto(pictureSource.SAVEDPHOTOALBUM);
+      });  
+    });
+
     </script>
   </head>
   <body>
-    <button class="ui-btn ui-btn-inline" onclick="capturePhoto();">Capture Photo</button> <br>
-    <button class="ui-btn ui-btn-inline" onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button class="ui-btn ui-btn-inline" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button class="ui-btn ui-btn-inline" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+  <div data-role="page" id="main">
+    <div>
+      <h2 class="ui-bar ui-bar-a title">Choose Photo Option</h2>
+    </div>
+    <div data-role="content" class="ui-body ui-body-a">
+      <button class="ui-btn ui-btn-inline" onclick="capturePhoto();">Capture Photo</button> <br>
+      <button class="ui-btn ui-btn-inline" onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+      <button class="ui-btn ui-btn-inline" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+      <button class="ui-btn ui-btn-inline" onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>      
+    </div>
+  </div> 
     <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
     <img style="display:none;width:400px;height:400px;" id="largeImage" src="" />
   </body>
